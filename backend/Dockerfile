@@ -4,8 +4,6 @@ FROM python:3.12-bookworm
 # Устанавливаем рабочую директорию
 WORKDIR /web_app
 
-# Создаем sources.list вручную (если его нет в slim-образе)
-RUN echo "deb http://ftp.debian.org/debian bookworm main" > /etc/apt/sources.list
 
 # Устанавливаем зависимости для сборки некоторых библиотек
 RUN apt-get update && apt-get install -y --no-install-recommends \
