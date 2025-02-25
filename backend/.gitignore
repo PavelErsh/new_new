@@ -1,0 +1,11 @@
+.idea
+__pycache__
+venv_name
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+idea/
+.venv/
+backup.sql
+.env

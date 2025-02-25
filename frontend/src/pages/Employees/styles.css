@@ -1,0 +1,56 @@
+.employee-table-container {
+  margin: 20px auto;
+  max-width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  /* Добавляем горизонтальную прокрутку */
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  /* Изменяем на auto для адаптивности */
+}
+
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+  /* Предотвращаем перенос текста */
+}
+
+.employee-table th {
+  background-color: #00aaff;
+  /* Изменяем цвет фона */
+  color: white;
+  /* Изменяем цвет текста */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.employee-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #0088cc;
+}
