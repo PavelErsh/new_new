@@ -4,25 +4,25 @@ FROM python:3.12-slim
 # Устанавливаем рабочую директорию
 WORKDIR /web_app
 
-RUN sed -i 's|deb.debian.org|ftp.debian.org|g' /etc/apt/sources.list
+# Создаем sources.list вручную (если его нет в slim-образе)
+RUN echo "deb http://ftp.debian.org/debian bookworm main" > /etc/apt/sources.list
+
 # Устанавливаем зависимости для сборки некоторых библиотек
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-
-RUN pip install asyncpg sqlalchemy[asyncio]
-# Обновляем pip
-RUN pip install --upgrade pip
+# Устанавливаем базовые Python-пакеты
+RUN pip install --upgrade pip && \
+    pip install asyncpg sqlalchemy[asyncio]
 
 # Копируем файл с зависимостями и устанавливаем их
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-
 # Копируем все файлы проекта
 COPY . .
 
 # Указываем команду по умолчанию для запуска приложения через uvicorn
-CMD ["sh", "-c", "uvicorn web_app.main:app --host 0.0.0.0 --port 8000 --reload"]
+CMD ["uvicorn", "web_app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
