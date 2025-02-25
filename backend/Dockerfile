@@ -4,6 +4,7 @@ FROM python:3.12-slim
 # Устанавливаем рабочую директорию
 WORKDIR /web_app
 
+RUN sed -i 's|deb.debian.org|ftp.debian.org|g' /etc/apt/sources.list
 # Устанавливаем зависимости для сборки некоторых библиотек
 RUN apt-get update && apt-get install -y \
     build-essential \
