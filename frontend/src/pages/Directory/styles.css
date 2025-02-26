@@ -1,0 +1,28 @@
+.center-button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.custom-link {
+  min-width: 350px;
+  font-size: 24px;
+  padding: 20px 40px;
+  background-color: #1890ff;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-link:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.custom-link:hover {
+  background-color: #40a9ff;
+  color: white;
+}

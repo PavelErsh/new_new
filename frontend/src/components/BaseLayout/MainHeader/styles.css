@@ -1,0 +1,67 @@
+.ant-layout-header {
+  padding: 0;
+  height: auto;
+  line-height: 100%;
+  background: transparent;
+}
+
+.header-top {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  height: 50px;
+}
+
+.logo a {
+  height: auto;
+}
+
+.header-settings {
+  margin: 0;
+  margin-right: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.header-settings:hover {
+  color: #666;
+}
+
+.time-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.time {
+  font-size: 16px;
+  color: #333;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-bottom {
+  padding: 20px 0 50px;
+}
+
+.header-bottom-btn {
+  position: relative;
+}
+
+.disabled-dashboard-btn.ant-btn-primary[disabled] {
+  background-color: #f0f0f0;
+  border-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.45);
+  cursor: not-allowed;
+}

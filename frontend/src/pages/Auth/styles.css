@@ -10,16 +10,13 @@
   width: 100%;
   padding: 30px;
   background-color: rgba(255, 255, 255, 0.9);
-  /* Полупрозрачный фон формы */
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  /* Мягкая тень */
   transition: box-shadow 0.3s ease;
 }
 
 .form-wrapper:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  /* Эффект тени при наведении */
 }
 
 h2 {
@@ -27,4 +24,27 @@ h2 {
   color: #333;
   font-size: 28px;
   margin-bottom: 20px;
+}
+
+.auth-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-desc {
+  margin-bottom: 10px;
+}
+
+.auth-link {
+  padding: 5px;
+  margin: 0;
+  width: fit-content;
+  background-color: transparent;
+  color: #00aaff;
+}
+
+.auth-link:hover {
+  color: #ffffff;
 }

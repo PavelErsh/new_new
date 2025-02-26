@@ -1,0 +1,45 @@
+name: Docker Compose and Pytest
+
+on: [push, pull_request]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create .env file
+        run: |
+          echo "SECRET_KEY=your_secret_key" > .env
+          echo "REFRESH_KEY=your_refresh_secret_key" >> .env
+          echo "ALGORITHM=HS256" >> .env
+
+      - name: Start Docker containers
+        run: docker compose up --build -d
+
+      - name: Wait for service readiness
+        run: |
+          # Ожидание доступности порта (адаптируйте под ваш порт)
+          timeout 120 bash -c 'until nc -z localhost 8000; do sleep 1; done'
+          # Альтернативный вариант через логи
+          # timeout 120 bash -c 'until docker compose logs app 2>&1 | grep "Ready"; do sleep 1; done'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pytest
+          # Если есть дополнительные зависимости:
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest -vv
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down

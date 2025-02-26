@@ -1,55 +1,27 @@
-import './styles.css'
+import { Col, Layout, Row } from "antd";
+import MainHeader from "../../components/BaseLayout/MainHeader/MainHeader";
+import "./styles.css";
+import { Content } from "antd/es/layout/layout";
+import EmployeesData from "../../components/Employees/EmployeesData/EmployeesData";
+import { AuthContext } from "../../main";
+import { useContext } from "react";
 
 export const Employees = () => {
+  const { store } = useContext(AuthContext);
+  store.page = "Сотрудники";
+
   return (
-    <div className="employee-table-container">
-      <table className="employee-table">
-        <thead>
-          <tr>
-            <th>Фамилия</th>
-            <th>Имя</th>
-            <th>Отчество</th>
-            <th>Фамилия ИО</th>
-            <th>Должность</th>
-            <th>Телефон</th>
-            <th>e-mail</th>
-            <th>Логин Телеграм</th>
-            <th>ДР, дата</th>
-            <th>Категория</th>
-            <th>Специализация</th>
-            <th>Примечание</th>
-            <th>Логин</th>
-            <th>Роль</th>
-            <th>Действия</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>
-              <button className="edit-button" data-user-id="{{ user.id }}">
-                Изменить
-              </button>
-              <button className="delete-button" data-user-id="{{ user.id }}">
-                Удалить
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <>
+      <MainHeader />
+      <Layout className="container">
+        <Content>
+          <Row gutter={16} align="middle" className="row-spacing">
+            <Col className="gutter-row" span={24}>
+              <EmployeesData />
+            </Col>
+          </Row>
+        </Content>
+      </Layout>
+    </>
   );
 };
